@@ -11,58 +11,95 @@ public class Move : MonoBehaviour {
     Collider2D wall;
     Vector2 lastWallEnd;
     public float speed = 16;
+    public bool dead = false;
 
     void spawnWall()
     {
-        lastWallEnd = transform.position;
-        GameObject l = (GameObject)Instantiate(lightwall, transform.position, Quaternion.identity);
-        wall = l.GetComponent<Collider2D>();
+        if (dead == false)
+        {
+            lastWallEnd = transform.position;
+            GameObject l = (GameObject)Instantiate(lightwall, transform.position, Quaternion.identity);
+            wall = l.GetComponent<Collider2D>();
+
+        }
     }
 
     void fitColliderBetween(Collider2D co, Vector2 a, Vector2 b)
     {
-        co.transform.position = a + (b - a) * 0.5f;
-        float lon = Vector2.Distance(a, b);
-        if (a.x != b.x)
-            co.transform.localScale = new Vector2(lon+1, 1);
-        else
-            co.transform.localScale = new Vector2(1, lon+1);
+        if (dead == false)
+        {
+            co.transform.position = a + (b - a) * 0.5f;
+            float lon = Vector2.Distance(a, b);
+            if (a.x != b.x)
+                co.transform.localScale = new Vector2(lon + 1, 1);
+            else
+                co.transform.localScale = new Vector2(1, lon + 1);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D co)
     {
-        if (co != wall)
+        if (dead == false)
         {
-            Destroy(gameObject);
+            if (co != wall)
+            {
+                Destroy(gameObject);
+                dead = true;
+            }
         }
+
     }
     // Use this for initialization
     void Start () {
+
         GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
         spawnWall();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(upKey))
+        if (dead == false)
         {
-            GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
-            spawnWall();
-        }else if (Input.GetKeyDown(downKey))
-        {
-            GetComponent<Rigidbody2D>().velocity = -Vector2.up * speed;
-            spawnWall();
+            if (Input.GetKeyDown(upKey))
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
+                spawnWall();
+            }
+            else if (Input.GetKeyDown(downKey))
+            {
+                GetComponent<Rigidbody2D>().velocity = -Vector2.up * speed;
+                spawnWall();
+            }
+            else if (Input.GetKeyDown(rightKey))
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+                spawnWall();
+            }
+            else if (Input.GetKeyDown(leftKey))
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
+                spawnWall();
+            }
+            fitColliderBetween(wall, lastWallEnd, transform.position);
+            /*
+            if (transform.position.x > 65)
+            {
+                dead = true;
+            }
+            if (transform.position.x > -65)
+            {
+                dead = true;
+            }
+            if (transform.position.y > 65)
+            {
+                dead = true;
+            }
+            if (transform.position.y > -65)
+            {
+                dead = true;
+            }
+            */
         }
-        else if (Input.GetKeyDown(rightKey))
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
-            spawnWall();
-        }
-        else if (Input.GetKeyDown(leftKey))
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
-            spawnWall();
-        }
-        fitColliderBetween(wall, lastWallEnd, transform.position);
     }
+
 }
