@@ -11,42 +11,39 @@ public class Move : MonoBehaviour {
     Collider2D wall;
     Vector2 lastWallEnd;
     public float speed = 16;
-    public bool dead = false;
+
 
     void spawnWall()
     {
-        if (dead == false)
-        {
+        
             lastWallEnd = transform.position;
             GameObject l = (GameObject)Instantiate(lightwall, transform.position, Quaternion.identity);
             wall = l.GetComponent<Collider2D>();
 
-        }
+        
     }
 
     void fitColliderBetween(Collider2D co, Vector2 a, Vector2 b)
     {
-        if (dead == false)
-        {
+
             co.transform.position = a + (b - a) * 0.5f;
             float lon = Vector2.Distance(a, b);
             if (a.x != b.x)
                 co.transform.localScale = new Vector2(lon + 1, 1);
             else
                 co.transform.localScale = new Vector2(1, lon + 1);
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D co)
     {
-        if (dead == false)
-        {
+
             if (co != wall)
             {
                 Destroy(gameObject);
-                dead = true;
+               
             }
-        }
+        
 
     }
     // Use this for initialization
@@ -58,8 +55,7 @@ public class Move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (dead == false)
-        {
+
             if (Input.GetKeyDown(upKey))
             {
                 GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
@@ -81,25 +77,25 @@ public class Move : MonoBehaviour {
                 spawnWall();
             }
             fitColliderBetween(wall, lastWallEnd, transform.position);
-            /*
-            if (transform.position.x > 65)
+            
+            if (transform.position.x > 64.1)
             {
-                dead = true;
-            }
-            if (transform.position.x > -65)
-            {
-                dead = true;
-            }
-            if (transform.position.y > 65)
-            {
-                dead = true;
-            }
-            if (transform.position.y > -65)
-            {
-                dead = true;
-            }
-            */
+            Destroy(gameObject);
         }
+            if (transform.position.x < -64.1)
+            {
+            Destroy(gameObject);
+        }
+            if (transform.position.y > 64.1)
+            {
+            Destroy(gameObject);
+        }
+            if (transform.position.y < -64.1)
+            {
+            Destroy(gameObject);
+            }
+            
+        
     }
 
 }
