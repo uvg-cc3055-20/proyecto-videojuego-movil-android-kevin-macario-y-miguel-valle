@@ -307,7 +307,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 264229219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67b57f2dfb9d34a43a2c90d9e08f8e64, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f5e3918629aa9a409660a7a20f92ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &492406006
@@ -1257,7 +1257,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.034075245, y: -0.038943242}
+  m_Offset: {x: 0.03203483, y: -0.039963387}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1268,7 +1268,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.124705, y: 0.16792667}
+  m_Size: {x: 0.092061624, y: 0.13324285}
   m_EdgeRadius: 0
 --- !u!114 &1442988093
 MonoBehaviour:
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   rightKey: 275
   leftKey: 276
   lightwall: {fileID: 1659193727992668, guid: 6edfbe9b04aa55e4ab2d2eb3ce7e50a7, type: 2}
-  speed: 16
+  speed: 20
 --- !u!95 &1442988094
 Animator:
   serializedVersion: 3
@@ -1397,7 +1397,7 @@ MonoBehaviour:
   rightKey: 100
   leftKey: 97
   lightwall: {fileID: 1597114728254324, guid: e7c8d93d328d5d644996ccef3e04235e, type: 2}
-  speed: 16
+  speed: 20
 --- !u!95 &1532700426
 Animator:
   serializedVersion: 3
@@ -1504,7 +1504,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0033941083, y: -0.057699442}
+  m_Offset: {x: -0.00097509474, y: -0.054786608}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1515,7 +1515,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19876906, y: 0.36168492}
+  m_Size: {x: 0.16672821, y: 0.3325572}
   m_EdgeRadius: 0
 --- !u!1 &1533922663
 GameObject:
