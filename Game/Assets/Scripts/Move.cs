@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Kevin Macario 17369
+//Miguel Valle 17102
+//Clase que habilita los movimientos de personaje
+
 public class Move : MonoBehaviour {
     public KeyCode upKey;
     public KeyCode downKey;
